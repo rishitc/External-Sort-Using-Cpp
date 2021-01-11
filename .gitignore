@@ -6,3 +6,5 @@
 *.inp
 *.txt
 *.out
+trial.cpp
+/bin/*
