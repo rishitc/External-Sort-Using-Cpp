@@ -63,7 +63,7 @@ int input(string input_name, int TOTAL_MEM) {
 
         // string::size() returns the length of the string, in terms of bytes.
         if (total_mem_so_far + sentence.size() < TOTAL_MEM) {
-            total_mem_so_far += sentence.size() + 1;  // CHECK: We add 1 to account for the '\0' character?
+            total_mem_so_far += sentence.size();
             data.push_back(sentence);  // Add the data read to the vector (stored in RAM)
         } else {
             sort(data.begin(), data.end());  // Sort the collection of strings
