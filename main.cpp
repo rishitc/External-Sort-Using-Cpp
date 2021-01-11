@@ -42,7 +42,7 @@ int input(string input_name, int TOTAL_MEM) {
     cout << "The size of the file chosen is \033[96;1m(in bytes)\033[0m: " << input_size << endl;
 
     int run_count = 0;
-    int total_mem_so_far = 0;
+    int total_mem_so_far = 0;  // Total memory in RAM in Bytes
 
     ofstream output;
 
