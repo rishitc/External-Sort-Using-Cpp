@@ -24,30 +24,35 @@ struct HeapNode {
 
 int input(string input_name, int TOTAL_MEM) {
     ifstream input; 
+
+    // .c_str() is used to generate a null-terminated string from the C++ string
     input.open(input_name.c_str());
 
+    // Check if there are any I/O errors while opening the file
     if (!input.good()) {
         cout << "File input is not found!" << endl << "Exit program!" << endl;
         exit(-1);
     }
 
     int input_size; 
-    input.seekg(0, input.end);
-    input_size = input.tellg();
-    input.seekg(0, input.beg);
-    cout << "-------------------------------------------------------\n";
-    cout << "The size of the file chosen is (in bytes): " << input_size << endl;
+    input.seekg(0, input.end);  // Set the cursor to the end of the file
+    input_size = input.tellg();  // Get the length of the file
+    input.seekg(0, input.beg);  // Set the cursor to the beginning of the file
+    cout << "\033[1m-------------------------------------------------------\033[0m\n";
+    cout << "The size of the file chosen is \033[96;1m(in bytes)\033[0m: " << input_size << endl;
 
     int run_count = 0;
     int total_mem_so_far = 0;
 
     ofstream output;
+
+    // Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
     vector<string> data; data.clear();
 
     cout << "File " << input_name << " is being read!" << endl;
-    cout << "-------------------------------------------------------\n\n\n";
+    cout << "\033[1m-------------------------------------------------------\033[0m\n\n\n";
 
-    cout << "-------------------------------------------------------\n";
+    cout << "\033[1m-------------------------------------------------------\033[0m\n";
     while (!input.eof()) {
         string sentence;
         getline(input, sentence);
