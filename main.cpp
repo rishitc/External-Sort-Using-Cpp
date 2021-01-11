@@ -53,14 +53,20 @@ int input(string input_name, int TOTAL_MEM) {
     cout << "\033[1m-------------------------------------------------------\033[0m\n\n\n";
 
     cout << "\033[1m-------------------------------------------------------\033[0m\n";
-    while (!input.eof()) {
+
+    while (!input.eof()) {  // While the file is not empty
         string sentence;
-        getline(input, sentence);
+
+        // Note that any content in sentence before the call is replaced by
+        // the newly extracted sequence.
+        getline(input, sentence);  // Read a line from the input file
+
+        // string::size() returns the length of the string, in terms of bytes.
         if (total_mem_so_far + sentence.size() < TOTAL_MEM) {
-            total_mem_so_far += sentence.size() + 1;
-            data.push_back(sentence);
+            total_mem_so_far += sentence.size() + 1;  // CHECK: We add 1 to account for the '\0' character?
+            data.push_back(sentence);  // Add the data read to the vector (stored in RAM)
         } else {
-            sort(data.begin(), data.end());
+            sort(data.begin(), data.end());  // Sort the collection of strings
 
             run_count++;
             stringstream ss;
@@ -223,6 +229,8 @@ int main(int argc, char* argv[]) {
 
     string input_name = argv[1];
     string output_name = argv[2];
+
+    // strtol is used to convert the string into a long int
     int TOTAL_MEM = strtol(argv[3], nullptr, 0); // bytes 
     
     int runs_count = input(input_name, TOTAL_MEM);
