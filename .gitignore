@@ -6,5 +6,5 @@
 *.inp
 *.txt
 *.out
-trial.cpp
+**/trial.cpp
 /bin/*
